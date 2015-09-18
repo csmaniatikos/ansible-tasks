@@ -1,11 +1,11 @@
 ---
 - name: Add Nginx Repository
   apt_repository: repo='ppa:nginx/stable' state=present
-  register: ppastable
+  register: nginxrepook
 
 - name: Install Nginx
   apt: pkg=nginx state=installed update_cache=true
-  when: ppastable|success
+  when: nginxrepook|success
   register: nginxinstalled
   notify:
     - Start Nginx
